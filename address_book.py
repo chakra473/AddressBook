@@ -55,3 +55,39 @@ class Addressbook:
             print(f"Zip code : {record.zip}")
             print(f"Phone Number : {record.phone_number}")
             i += 1
+
+    def find_records(self, first_name):
+        """
+        Description:
+            This function is finding address book records based on first name
+        Parameter:
+            It takes self and first name as argument
+        Return:
+            returns True or False
+        """
+        for record in self.addressbook:
+            if record.first_name == first_name:
+                return True
+        return False
+
+    def update_records(self, old_first_name, new_first_name, last_name, address, city, state, zip, phone_number, email):
+        """
+        Description:
+            This function is updating address book records
+        Parameter:
+            It takes self and first name as argument
+        Return:
+            returns list of records
+        """
+        for record in self.addressbook:
+            if record.first_name == old_first_name:
+                record.first_name = new_first_name
+                record.last_name = last_name
+                record.address = address
+                record.city = city
+                record.state = state
+                record.zip = zip
+                record.phone_number = phone_number
+                record.email = email
+                print("\nRecord Updated Successfully !!")
+        return self.addressbook
