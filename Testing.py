@@ -71,6 +71,18 @@ class TestArithmeticOperation(unittest.TestCase):
         self.assertEqual(ab[0].phone_number, '1234567890')
         self.assertNotEqual(ab[0].email, 'm.chakra473@gmail.com')
 
+    def test_delete_records(self):
+        """
+        Description:
+            This function is testing delete records method of Addressbook Class
+        Parameter:
+            It takes self as argument
+        Return:
+            returns Nothing
+        """
+        ab = self.person.delete_record('abc')
+        self.assertEqual(len(ab), 0)
+
 
 if __name__ == "__main__":
     unittest.main()

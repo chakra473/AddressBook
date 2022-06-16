@@ -21,7 +21,7 @@ class Addressbook:
         Return:
             returns list of address book
         """
-        person = CreateContacts()  # Creating a object of CreateContacts Class
+        person = CreateContacts()  # Creating an object of CreateContacts Class
         person.first_name = first_name
         person.last_name = last_name
         person.address = address
@@ -90,4 +90,22 @@ class Addressbook:
                 record.phone_number = phone_number
                 record.email = email
                 print("\nRecord Updated Successfully !!")
+        return self.addressbook
+
+    def delete_record(self, first_name):
+        """
+        Description:
+            This function is deleting address book record by first name
+        Parameter:
+            It takes self first name as argument
+        Return:
+            returns none
+        """
+        for record in self.addressbook:
+            if record.first_name == first_name:  # Checking that first name provided by user is matching with
+                # Existing Record or not
+                self.addressbook.remove(record)  # Deleting all the details of one user in Address Book
+                print("\nRecord Deleted Successfully")
+            else:
+                print("record not found")
         return self.addressbook

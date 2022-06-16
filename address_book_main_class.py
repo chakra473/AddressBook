@@ -12,7 +12,7 @@ print("\nWelcome to Address Book System")
 
 records = Addressbook()
 while True:
-    print("\n1.Add a new Record\n2.Update Records\n3.Close the program")
+    print("\n1.Add a new Record\n2.Update Records\n3.Delete a Record\n4.Close the program")
     ch = int(input("Enter your choice : "))
     if ch == 1:
         first_name = input("\nEnter your First Name : ")
@@ -42,6 +42,10 @@ while True:
         else:
             print("Record Not Found!!")
     elif ch == 3:
+        f_name = input("Enter your First Name : ")
+        records.delete_record(f_name)
+        records.print_records()
+    elif ch == 4:
         break
     else:
         print("Choice is invalid")
