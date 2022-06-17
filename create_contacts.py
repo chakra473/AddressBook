@@ -33,6 +33,6 @@ class CreateContacts:
         self.city = input("Enter your City Name : ")
         self.state = input("Enter your State Name : ")
         self.zip = int(input("Enter your Zip Code : "))
-        self.phone_number = input("Enter your Phone Number : ")
+        self.phone_number = int(input("Enter your Phone Number : "))
         self.email = input("Enter your Email Address: ")
         return self.first_name, self.last_name, self.address, self.city, self.state, self.zip, self.phone_number, self.email

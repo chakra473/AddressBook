@@ -20,8 +20,8 @@ while True:
         address = input("Enter your Address : ")
         city = input("Enter your City Name : ")
         state = input("Enter your State Name : ")
-        zip = input("Enter your Zip Code : ")
-        phone_number = input("Enter your Phone Number : ")
+        zip = int(input("Enter your Zip Code : "))
+        phone_number = int(input("Enter your Phone Number : "))
         email = input("Enter your Email : ")
         records.add_records(first_name, last_name, address, city, state, zip, phone_number,
                             email)  # Calling a method of AddressBook class to add record in address book

@@ -38,50 +38,65 @@ class TestArithmeticOperation(unittest.TestCase):
     #     self.assertEqual(ab[0].email, 'chakra@gmail.com')
     #     # self.assertListEqual(list(ab[0]),per)
 
-    def test_find_records(self):
-        """
-        Description:
-            This function is testing find records method of Addressbook Class
-        Parameter:
-            It takes self as argument
-        Return:
-            returns Nothing
-        """
-        ab = self.person.add_records('abc', 'xyz', 'pqr', 'kmn', 'uvw', '123', '1234567890', 'chakra@gmail.com')
-        self.assertFalse(self.person.find_records('def'))
+    # def test_find_records(self):
+    #     """
+    #     Description:
+    #         This function is testing find records method of Addressbook Class
+    #     Parameter:
+    #         It takes self as argument
+    #     Return:
+    #         returns Nothing
+    #     """
+    #     ab = self.person.add_records('abc', 'xyz', 'pqr', 'kmn', 'uvw', '123', '1234567890', 'chakra@gmail.com')
+    #     self.assertFalse(self.person.find_records('def'))
+    #     self.assertTrue(self.person.find_records('abc'))
+    #
+    # def test_update_records(self):
+    #     """
+    #     Description:
+    #         This function is testing update records method of Addressbook Class
+    #     Parameter:
+    #         It takes self as argument
+    #     Return:
+    #         returns Nothing
+    #     """
+    #     #a = self.person.add_records('abc', 'xyz', 'pqr', 'kmn', 'uvw', '123', '1234567890', 'chakra@gmail.com')
+    #     ab = self.person.update_records('abc', 'chakra', 'murali', 'pqr', 'kmn', 'uvw', '123', '1234567890',
+    #                                     'chakra@gmail.com')
+    #     self.assertEqual(ab[0].first_name, 'chakra')
+    #     self.assertEqual(ab[0].last_name, 'murali')
+    #     self.assertEqual(ab[0].address, 'pqr')
+    #     self.assertEqual(ab[0].city, 'kmn')
+    #     self.assertEqual(ab[0].state, 'uvw')
+    #     self.assertEqual(ab[0].zip, '123')
+    #     self.assertEqual(ab[0].phone_number, '1234567890')
+    #     self.assertNotEqual(ab[0].email, 'm.chakra473@gmail.com')
+    #
+    # def test_delete_records(self):
+    #     """
+    #     Description:
+    #         This function is testing delete records method of Addressbook Class
+    #     Parameter:
+    #         It takes self as argument
+    #     Return:
+    #         returns Nothing
+    #     """
+    #     ab = self.person.delete_record('abc')
+    #     self.assertEqual(len(ab), 0)
 
-    def test_update_records(self):
+    def test_add_multiple_records(self):
         """
         Description:
-            This function is testing update records method of Addressbook Class
+            This function is testing add records method of Addressbook Class to add multiple records
         Parameter:
             It takes self as argument
         Return:
             returns Nothing
         """
-        #a = self.person.add_records('abc', 'xyz', 'pqr', 'kmn', 'uvw', '123', '1234567890', 'chakra@gmail.com')
-        ab = self.person.update_records('abc', 'chakra', 'murali', 'pqr', 'kmn', 'uvw', '123', '1234567890',
-                                        'chakra@gmail.com')
-        self.assertEqual(ab[0].first_name, 'chakra')
-        self.assertEqual(ab[0].last_name, 'murali')
-        self.assertEqual(ab[0].address, 'pqr')
-        self.assertEqual(ab[0].city, 'kmn')
-        self.assertEqual(ab[0].state, 'uvw')
-        self.assertEqual(ab[0].zip, '123')
-        self.assertEqual(ab[0].phone_number, '1234567890')
-        self.assertNotEqual(ab[0].email, 'm.chakra473@gmail.com')
-
-    def test_delete_records(self):
-        """
-        Description:
-            This function is testing delete records method of Addressbook Class
-        Parameter:
-            It takes self as argument
-        Return:
-            returns Nothing
-        """
-        ab = self.person.delete_record('abc')
-        self.assertEqual(len(ab), 0)
+        self.person.add_records('abc', 'xyz', 'pqr', 'kmn', 'uvw', '123', '1234567890', 'mk@gmail.com')
+        ab = self.person.add_records('Chakravarthy', 'murali', 'thiruvallur', 'chennai', 'TamilNadu', '123', '1234567890',
+                                     'm.chakra473@gmail.com')
+        self.assertEqual(len(ab), len(self.person.addressbook))
 
 
 if __name__ == "__main__":
