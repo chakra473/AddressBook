@@ -1,23 +1,60 @@
-'''
+"""
     @Author: Chakravarthy
     @Date: 2022-06-16 14:13:07
     @Last Modified by: Chakravarthy
     @Last Modified time: 2022-05-30 14:13:15
     @Title : Python Code for Address Book System
-'''
+"""
 
 from create_contacts import CreateContacts
 
 
 class Addressbook:
-    addressbook = []  # Creating List having CreateContacts Class Object Datatype
+    addressbook_name = []  # Creating List having CreateContacts Class Object Datatype
 
-    def add_records(self, first_name, last_name, address, city, state, zip, phone_number, email):
+    addressbook_dict = {}
+
+    def create_addressbook(self, name):
+        self.addressbook_name.append(name)  # Add address book name which is provided by user  in address book list
+        if len(self.addressbook_dict) == 0:  # Checking that dictionary is empty or not
+            self.addressbook_dict[
+                name] = []  # creating key value pair where address book name is key and all the record of address
+            # book as value
+        else:
+            if name in self.addressbook_dict.keys():  # Checking that address book given by user is already present
+                # in dictionary or not
+                print("This AddressBook is also present")
+            else:
+                self.addressbook_dict[
+                    name] = []  # creating key value pair where address book name is key and all the record of
+                # address book as value
+        return self.addressbook_name, self.addressbook_dict
+
+    temp = 0
+
+    def display_list_of_addressBook(self):
+        """
+        Description:
+            This function is displaying only list of address book available
+        Parameter:
+            It takes self as argument
+        Return:
+            returns Nothing
+        """
+        if len(self.addressbook_name) == 0:  # Checking that address book list is empty or not
+            print("\nThere is no address book available")
+            self.temp = 1
+        else:
+            print("\n\nList of existing Address Book Are : ")
+            for name in self.addressbook_name:  # Accessing all the names in address book
+                print(name)
+
+    def add_records(self, ab_name, first_name, last_name, address, city, state, zip, phone_number, email):
         """
         Description:
             This function is getting user input and store it in list
         Parameter:
-            It takes self and all the details as argument
+            It takes self and all the details with book name as argument
         Return:
             returns list of address book
         """
@@ -30,8 +67,13 @@ class Addressbook:
         person.zip = zip
         person.phone_number = phone_number
         person.email = email
-        self.addressbook.append(person)
-        return self.addressbook
+        for content in self.addressbook_dict.keys():  # Accessing all the address book name of dictionary
+            if content == ab_name:  # Checking that address book name provided by user is matching with
+                # dictionary address book or not
+                self.addressbook_dict[ab_name].append(person)
+            else:
+                print(f"\n{content} Address Book not found")
+        return self.addressbook_dict
 
     def print_records(self):
         """
@@ -42,21 +84,25 @@ class Addressbook:
         Return:
             returns none
         """
-        i = 1
-        print("Records Present in Address Book : ")
-        for record in self.addressbook:  # Accessing all the records of list one by one using foreach loop
-            print(f"\n\nRecord - {i}")
-            print(f"First Name : {record.first_name}")
-            print(f"Last Name : {record.last_name}")
-            print(f"Address : {record.address}")
-            print(f"City : {record.city}")
-            print(f"State : {record.state}")
-            print(f"Email : {record.email}")
-            print(f"Zip code : {record.zip}")
-            print(f"Phone Number : {record.phone_number}")
-            i += 1
+        print("\n\nRecords Present in Multiple Address Book : ")
 
-    def find_records(self, first_name):
+        for ab_name in self.addressbook_dict.keys():  # Accessing all the address book name of dictionary
+            print(f"\n\nAddress Book : " + ab_name)
+            i = 1
+            for record in self.addressbook_dict[ab_name]:  # Accessing all the records of list one by one using
+                # foreach loop
+                print(f"\n\nRecord - {i}")
+                print(f"First Name : {record.first_name}")
+                print(f"Last Name : {record.last_name}")
+                print(f"Address : {record.address}")
+                print(f"City : {record.city}")
+                print(f"State : {record.state}")
+                print(f"Email : {record.email}")
+                print(f"Zip code : {record.zip}")
+                print(f"Phone Number : {record.phone_number}")
+                i += 1
+
+    def find_records(self, ab_name, first_name):
         """
         Description:
             This function is finding address book records based on first name
@@ -65,12 +111,20 @@ class Addressbook:
         Return:
             returns True or False
         """
-        for record in self.addressbook:
-            if record.first_name == first_name:
-                return True
+        for content in self.addressbook_dict.keys():
+            if content == ab_name:
+                for record in self.addressbook_dict[ab_name]:
+                    if record.first_name == first_name:
+                        return True
+                    else:
+                        print("\nRecord Not Found")
+            else:
+                print("Address book not found")
         return False
 
-    def update_records(self, old_first_name, new_first_name, last_name, address, city, state, zip, phone_number, email):
+    def update_records(self, ab_name, old_first_name, new_first_name, last_name, address, city, state, zip,
+                       phone_number,
+                       email):
         """
         Description:
             This function is updating address book records
@@ -79,20 +133,25 @@ class Addressbook:
         Return:
             returns list of records
         """
-        for record in self.addressbook:
-            if record.first_name == old_first_name:
-                record.first_name = new_first_name
-                record.last_name = last_name
-                record.address = address
-                record.city = city
-                record.state = state
-                record.zip = zip
-                record.phone_number = phone_number
-                record.email = email
-                print("\nRecord Updated Successfully !!")
-        return self.addressbook
+        for content in self.addressbook_dict.keys():  # Accessing all the address book name of dictionary
+            if content == ab_name:  # Checking that address book name provided by user is matching with
+                # dictionary address book or not
+                for record in self.addressbook_dict[ab_name]:
+                    if record.first_name == old_first_name:  # Checking that first name provided by user is
+                        # matching with Existing Record or not
+                        record.first_name = new_first_name
+                        record.last_name = last_name
+                        record.address = address
+                        record.city = city
+                        record.state = state
+                        record.zip = zip
+                        record.phone_number = phone_number
+                        record.email = email
+                        print("\nRecord Updated Successfully !!")
 
-    def delete_record(self, first_name):
+        return self.addressbook_dict
+
+    def delete_record(self, ab_name, first_name):
         """
         Description:
             This function is deleting address book record by first name
@@ -101,11 +160,11 @@ class Addressbook:
         Return:
             returns none
         """
-        for record in self.addressbook:
-            if record.first_name == first_name:  # Checking that first name provided by user is matching with
-                # Existing Record or not
-                self.addressbook.remove(record)  # Deleting all the details of one user in Address Book
-                print("\nRecord Deleted Successfully")
-            else:
-                print("record not found")
-        return self.addressbook
+        for content in self.addressbook_dict.keys():
+            if content == ab_name:
+                for record in self.addressbook_dict[ab_name]:
+                    if record.first_name == first_name:
+                        self.addressbook_dict[ab_name].remove(
+                            record)  # Deleting all the details of one user in Address Book
+                        print("\nRecord Deleted Successfully")
+        return self.addressbook_dict
