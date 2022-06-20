@@ -11,8 +11,9 @@ from create_contacts import CreateContacts
 
 class Addressbook:
     addressbook_name = []  # Creating List having CreateContacts Class Object Datatype
-
     addressbook_dict = {}
+    city_dictionary = {}
+    state_dictionary = {}
 
     def create_addressbook(self, name):
         self.addressbook_name.append(name)  # Add address book name which is provided by user  in address book list
@@ -240,3 +241,39 @@ class Addressbook:
                 else:
                     print("no records found")
         return count
+
+    def add_persons_in_dictionary_by_city_name(self):
+        """
+        Description:
+            This function is storing address book records in dictionary by city name
+        Parameter:
+            It takes self as argument
+        Return:
+            returns city dictionary
+        """
+        for ab_name in self.addressbook_dict.keys():  # Accessing all the address book name of dictionary
+            for record in self.addressbook_dict[ab_name]:
+                if record.city in self.city_dictionary.keys():
+                    self.city_dictionary[record.city].append(record)
+                else:
+                    self.city_dictionary[record.city] = []
+                    self.city_dictionary[record.city].append(record)
+        return self.city_dictionary
+
+    def add_persons_in_dictionary_by_state_name(self):
+        """
+        Description:
+            This function is storing address book records in dictionary by state name
+        Parameter:
+            It takes self as argument
+        Return:
+            returns state dictionary
+        """
+        for ab_name in self.addressbook_dict.keys():  # Accessing all the address book name of dictionary
+            for record in self.addressbook_dict[ab_name]:
+                if record.state in self.city_dictionary.keys():
+                    self.state_dictionary[record.state].append(record)
+                else:
+                    self.state_dictionary[record.state] = []
+                    self.state_dictionary[record.state].append(record)
+        return self.state_dictionary
