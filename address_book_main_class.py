@@ -12,7 +12,7 @@ print("\nWelcome to Address Book System")
 
 records = Addressbook()
 while True:
-    print("\n1.Add a new Record\n2.Update Records\n3.Delete Records\n4.Exit")
+    print("\n1.Add a new Record\n2.Update Records\n3.Delete Records\n4.Display By City\n5.Display By State\n6.Exit")
     ch = int(input("\nEnter your choice : "))
     if ch == 1:
         ans = input("\nDo you want to add records in new Address Book ? If yes then press 1 : ")
@@ -84,9 +84,12 @@ while True:
                 records.delete_record(first_name)
         records.print_records()
     elif ch == 4:
-        a = records.add_records('MyBook', 'abc', 'xyz', 'pqr', 'kmn', 'uvw', '123', '1234567890',
-                                'mk@gmail.com')
-        print(a)
+        city_name = input("\nEnter city name : ")
+        records.display_persons_by_city(city_name)
+    elif ch == 5:
+        state_name = input("\nEnter state name : ")
+        records.display_persons_by_state(state_name)
+    elif ch == 6:
         break
     else:
         print("Choice is invalid")

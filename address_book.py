@@ -178,3 +178,65 @@ class Addressbook:
                             self.addressbook_dict[ab_name].remove(
                                 record)  # Deleting all the details of one user in Address Book
                             print("\nDuplicate Record Deleted Successfully")
+
+    def display_persons_by_city(self, city):
+        """
+        Description:
+            This function is printing address book records by city name
+        Parameter:
+            It takes self and city name as argument
+        Return:
+            returns number of records
+        """
+        count = 0
+        print(f"\nAll records present in multiple address books where city name \"{city}\" are : ")
+        for ab_name in self.addressbook_dict.keys():  # Accessing all the address book name of dictionary
+            print(f"\n\nAddress Book : " + ab_name)
+            i = 1
+            for record in self.addressbook_dict[ab_name]:
+                if record.city == city:
+                    print(f"\n\nRecord - {i}")
+                    print(f"First Name : {record.first_name}")
+                    print(f"Last Name : {record.last_name}")
+                    print(f"Address : {record.address}")
+                    print(f"City : {record.city}")
+                    print(f"State : {record.state}")
+                    print(f"Email : {record.email}")
+                    print(f"Zip code : {record.zip}")
+                    print(f"Phone Number : {record.phone_number}")
+                    i += 1
+                    count += 1
+                else:
+                    print("no records found")
+        return count
+
+    def display_persons_by_state(self, state):
+        """
+        Description:
+            This function is printing address book records by state name
+        Parameter:
+            It takes self and state name as argument
+        Return:
+            returns number of records
+        """
+        count = 0
+        print(f"\nAll records present in multiple address books where state name \"{state}\" are : ")
+        for ab_name in self.addressbook_dict.keys():  # Accessing all the address book name of dictionary
+            print(f"\n\nAddress Book : " + ab_name)
+            i = 1
+            for record in self.addressbook_dict[ab_name]:
+                if record.state == state:
+                    print(f"\n\nRecord - {i}")
+                    print(f"First Name : {record.first_name}")
+                    print(f"Last Name : {record.last_name}")
+                    print(f"Address : {record.address}")
+                    print(f"City : {record.city}")
+                    print(f"State : {record.state}")
+                    print(f"Email : {record.email}")
+                    print(f"Zip code : {record.zip}")
+                    print(f"Phone Number : {record.phone_number}")
+                    i += 1
+                    count += 1
+                else:
+                    print("no records found")
+        return count

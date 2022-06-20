@@ -41,47 +41,64 @@ class TestArithmeticOperation(unittest.TestCase):
     #                                       'mk@gmail.com')
     #     self.assertEqual(len(ab_dict['MyBook']), 1)
 
-    def test_find_records(self):
+    # def test_find_records(self):
+    #     """
+    #     Description:
+    #         This function is testing find records method of Addressbook Class
+    #     Parameter:
+    #         It takes self as argument
+    #     Return:
+    #         returns Nothing
+    #     """
+    #     self.person.create_addressbook("MyBook")
+    #     ab_dict = self.person.add_records('MyBook', 'abc', 'xyz', 'pqr', 'kmn', 'uvw', '123', '1234567890',
+    #                                       'mk@gmail.com')
+    #     ab_dict = self.person.add_records('MyBook', 'chakra', 'xyz', 'pqr', 'kmn', 'uvw', '123', '1234567890',
+    #                                       'mk@gmail.com')
+    #     self.assertTrue(self.person.find_records('MyBook', 'abc'))
+    #
+    # def test_update_records(self):
+    #     """
+    #     Description:
+    #         This function is testing update records method of Addressbook Class
+    #     Parameter:
+    #         It takes self as argument
+    #     Return:
+    #         returns Nothing
+    #     """
+    #     ab_dict = self.person.update_records('MyBook', 'abc', 'abc', 'murali', 'pqr', 'kmn', 'uvw', '123',
+    #                                          '1234567890', 'mk@gmail.com')
+    #     self.assertEqual(ab_dict['MyBook'][0].first_name, 'abc')
+    #     self.assertEqual(len(ab_dict['MyBook']), 2)
+    #
+    # def test_delete_records(self):
+    #     """
+    #     Description:
+    #         This function is testing delete records method of Addressbook Class
+    #     Parameter:
+    #         It takes self as argument
+    #     Return:
+    #         returns Nothing
+    #     """
+    #     ab_dict = self.person.delete_record('MyBook', 'abc')
+    #     self.assertEqual(len(ab_dict), 0)
+
+    def test_display_persons_by_state(self):
         """
         Description:
-            This function is testing find records method of Addressbook Class
+            This function is testing count the records display by state
         Parameter:
             It takes self as argument
         Return:
             returns Nothing
         """
         self.person.create_addressbook("MyBook")
-        ab_dict = self.person.add_records('MyBook', 'abc', 'xyz', 'pqr', 'kmn', 'uvw', '123', '1234567890',
-                                          'mk@gmail.com')
-        ab_dict = self.person.add_records('MyBook', 'chakra', 'xyz', 'pqr', 'kmn', 'uvw', '123', '1234567890',
-                                          'mk@gmail.com')
-        self.assertTrue(self.person.find_records('MyBook', 'abc'))
-
-    def test_update_records(self):
-        """
-        Description:
-            This function is testing update records method of Addressbook Class
-        Parameter:
-            It takes self as argument
-        Return:
-            returns Nothing
-        """
-        ab_dict = self.person.update_records('MyBook', 'abc', 'abc', 'murali', 'pqr', 'kmn', 'uvw', '123',
-                                             '1234567890', 'mk@gmail.com')
-        self.assertEqual(ab_dict['MyBook'][0].first_name, 'abc')
-        self.assertEqual(len(ab_dict['MyBook']), 2)
-
-    def test_delete_records(self):
-        """
-        Description:
-            This function is testing delete records method of Addressbook Class
-        Parameter:
-            It takes self as argument
-        Return:
-            returns Nothing
-        """
-        ab_dict = self.person.delete_record('MyBook', 'abc')
-        self.assertEqual(len(ab_dict), 0)
+        ab_dict = self.person.add_records('MyBook', 'chakra', 'm', 'pqr', 'kmn', 'tamilnadu', '123', '1234567890',
+                                          'mc@gmail.com')
+        ab_dict = self.person.add_records('MyBook', 'jay', 'm', 'pqr', 'kmn', 'tamilnadu', '123', '8451238945',
+                                          'mc@gmail.com')
+        result = self.person.display_persons_by_state('tamilnadu')
+        self.assertEqual(result, 2)
 
 
 if __name__ == "__main__":
