@@ -83,22 +83,22 @@ class TestArithmeticOperation(unittest.TestCase):
     #     ab_dict = self.person.delete_record('MyBook', 'abc')
     #     self.assertEqual(len(ab_dict), 0)
 
-    # def test_display_persons_by_state(self):
-    #     """
-    #     Description:
-    #         This function is testing count the records display by state
-    #     Parameter:
-    #         It takes self as argument
-    #     Return:
-    #         returns Nothing
-    #     """
-    #     self.person.create_addressbook("MyBook")
-    #     ab_dict = self.person.add_records('MyBook', 'chakra', 'm', 'pqr', 'chennai', 'tamilnadu', '123', '1234567890',
-    #                                       'mc@gmail.com')
-    #     ab_dict = self.person.add_records('MyBook', 'jay', 'm', 'pqr', 'trichy', 'tamilnadu', '123', '8451238945',
-    #                                       'mc@gmail.com')
-    #     result = self.person.display_persons_by_state('tamilnadu')
-    #     self.assertEqual(result, 2)
+    def test_display_persons_by_state(self):
+        """
+        Description:
+            This function is testing count the records display by state
+        Parameter:
+            It takes self as argument
+        Return:
+            returns Nothing
+        """
+        self.person.create_addressbook("MyBook")
+        ab_dict = self.person.add_records('MyBook', 'chakra', 'm', 'pqr', 'chennai', 'tamilnadu', '123', '1234567890',
+                                          'mc@gmail.com')
+        ab_dict = self.person.add_records('MyBook', 'jay', 'm', 'pqr', 'trichy', 'tamilnadu', '123', '8451238945',
+                                          'mc@gmail.com')
+        result = self.person.display_persons_by_state('tamilnadu')
+        self.assertEqual(result, 2)
 
     def test_add_persons_in_dictionary_by_city_name(self):
         """

@@ -85,10 +85,12 @@ while True:
         records.print_records()
     elif ch == 4:
         city_name = input("\nEnter city name : ")
-        records.display_persons_by_city(city_name)
+        total_records = records.display_persons_by_city(city_name)
+        print(f"\nTotal records present where city is {city_name}  : {total_records}")
     elif ch == 5:
         state_name = input("\nEnter state name : ")
-        records.display_persons_by_state(state_name)
+        total_records = records.display_persons_by_state(state_name)
+        print(f"\nTotal records present where state is {state_name} : {total_records}")
     elif ch == 6:
         break
     else:
