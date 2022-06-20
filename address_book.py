@@ -168,3 +168,13 @@ class Addressbook:
                             record)  # Deleting all the details of one user in Address Book
                         print("\nRecord Deleted Successfully")
         return self.addressbook_dict
+
+    def remove_duplicate(self, ab_name):
+        for content in self.addressbook_dict.keys():
+            if content == ab_name:
+                for record in self.addressbook_dict[ab_name]:
+                    for i in range(len(self.addressbook_dict)):
+                        if record.first_name[i] == record.first_name[i + 1]:
+                            self.addressbook_dict[ab_name].remove(
+                                record)  # Deleting all the details of one user in Address Book
+                            print("\nDuplicate Record Deleted Successfully")

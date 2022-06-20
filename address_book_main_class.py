@@ -49,7 +49,8 @@ while True:
                     zip = input("Enter your Zip Code : ")
                     phone_number = input("Enter your Phone Number : ")
                     email = input("Enter your Email : ")
-                    records.add_records(name_of_ab, first_name, last_name, address, city, state, zip, phone_number, email)
+                    records.add_records(name_of_ab, first_name, last_name, address, city, state, zip, phone_number,
+                                        email)
             records.print_records()
     elif ch == 2:
         records.display_list_of_addressBook()  # Displaying existing address book name
@@ -83,6 +84,9 @@ while True:
                 records.delete_record(first_name)
         records.print_records()
     elif ch == 4:
+        a = records.add_records('MyBook', 'abc', 'xyz', 'pqr', 'kmn', 'uvw', '123', '1234567890',
+                                'mk@gmail.com')
+        print(a)
         break
     else:
         print("Choice is invalid")
