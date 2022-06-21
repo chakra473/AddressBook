@@ -277,3 +277,16 @@ class Addressbook:
                     self.state_dictionary[record.state] = []
                     self.state_dictionary[record.state].append(record)
         return self.state_dictionary
+
+    def sort_by_person_name(self):
+        """
+        Description:
+            This function is sorting address book records in dictionary by person first name
+        Parameter:
+            It takes self as argument
+        Return:
+            returns address book dictionary
+        """
+        for content in self.addressbook_dict.keys():
+            self.addressbook_dict[content] = sorted(self.addressbook_dict[content], key=lambda x: x.first_name)
+        return self.addressbook_dict

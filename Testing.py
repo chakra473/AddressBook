@@ -83,56 +83,77 @@ class TestArithmeticOperation(unittest.TestCase):
     #     ab_dict = self.person.delete_record('MyBook', 'abc')
     #     self.assertEqual(len(ab_dict), 0)
 
-    def test_display_persons_by_state(self):
-        """
-        Description:
-            This function is testing count the records display by state
-        Parameter:
-            It takes self as argument
-        Return:
-            returns Nothing
-        """
-        self.person.create_addressbook("MyBook")
-        ab_dict = self.person.add_records('MyBook', 'chakra', 'm', 'pqr', 'chennai', 'tamilnadu', '123', '1234567890',
-                                          'mc@gmail.com')
-        ab_dict = self.person.add_records('MyBook', 'jay', 'm', 'pqr', 'trichy', 'tamilnadu', '123', '8451238945',
-                                          'mc@gmail.com')
-        result = self.person.display_persons_by_state('tamilnadu')
-        self.assertEqual(result, 2)
+    # def test_display_persons_by_state(self):
+    #     """
+    #     Description:
+    #         This function is testing count the records display by state
+    #     Parameter:
+    #         It takes self as argument
+    #     Return:
+    #         returns Nothing
+    #     """
+    #     self.person.create_addressbook("MyBook")
+    #     ab_dict = self.person.add_records('MyBook', 'chakra', 'm', 'pqr', 'chennai', 'tamilnadu', '123', '1234567890',
+    #                                       'mc@gmail.com')
+    #     ab_dict = self.person.add_records('MyBook', 'jay', 'm', 'pqr', 'trichy', 'tamilnadu', '123', '8451238945',
+    #                                       'mc@gmail.com')
+    #     result = self.person.display_persons_by_state('tamilnadu')
+    #     self.assertEqual(result, 2)
+    #
+    # def test_add_persons_in_dictionary_by_city_name(self):
+    #     """
+    #     Description:
+    #         This function is testing add_persons_in_dictionary_by_city_name method
+    #     Parameter:
+    #         It takes self as argument
+    #     Return:
+    #         returns Nothing
+    #     """
+    #     self.person.create_addressbook("MyBook")
+    #     ab_dict = self.person.add_records('MyBook', 'jay', 'm', 'pqr', 'chennai', 'tamilnadu', '123', '1234567890',
+    #                                       'mk@gmail.com')
+    #     ab_dict = self.person.add_records('MyBook', 'chakra', 'm', 'pqr', 'kovai', 'tamilnadu', '123', '8451238945',
+    #                                       'mk@gmail.com')
+    #     city_dict = self.person.add_persons_in_dictionary_by_city_name()
+    #     self.assertEqual(len(city_dict), 2)
+    #
+    # def test_add_persons_in_dictionary_by_state_name(self):
+    #     """
+    #     Description:
+    #         This function is testing add_persons_in_dictionary_by_state_name method
+    #     Parameter:
+    #         It takes self as argument
+    #     Return:
+    #         returns Nothing
+    #     """
+    #     self.person.create_addressbook("MyBook")
+    #     ab_dict = self.person.add_records('MyBook', 'jay', 'm', 'pqr', 'selam', 'tamilnadu', '123', '1234567890',
+    #                                       'mk@gmail.com')
+    #     ab_dict = self.person.add_records('MyBook', 'chakra', 'm', 'pqr', 'trichi', 'mno', '123', '8451238945',
+    #                                       'mk@gmail.com')
+    #     state_dict = self.person.add_persons_in_dictionary_by_state_name()
+    #     self.assertEqual(len(state_dict), 2)
 
-    def test_add_persons_in_dictionary_by_city_name(self):
+    def test_sort_by_person_name(self):
         """
         Description:
-            This function is testing add_persons_in_dictionary_by_city_name method
+            This function is testing sort_by_person_name method
         Parameter:
             It takes self as argument
         Return:
             returns Nothing
         """
         self.person.create_addressbook("MyBook")
-        ab_dict = self.person.add_records('MyBook', 'jay', 'm', 'pqr', 'chennai', 'tamilnadu', '123', '1234567890',
-                                          'mk@gmail.com')
-        ab_dict = self.person.add_records('MyBook', 'chakra', 'm', 'pqr', 'kovai', 'tamilnadu', '123', '8451238945',
-                                          'mk@gmail.com')
-        city_dict = self.person.add_persons_in_dictionary_by_city_name()
-        self.assertEqual(len(city_dict), 2)
-
-    def test_add_persons_in_dictionary_by_state_name(self):
-        """
-        Description:
-            This function is testing add_persons_in_dictionary_by_state_name method
-        Parameter:
-            It takes self as argument
-        Return:
-            returns Nothing
-        """
-        self.person.create_addressbook("MyBook")
-        ab_dict = self.person.add_records('MyBook', 'jay', 'm', 'pqr', 'selam', 'tamilnadu', '123', '1234567890',
-                                          'mk@gmail.com')
-        ab_dict = self.person.add_records('MyBook', 'chakra', 'm', 'pqr', 'trichi', 'mno', '123', '8451238945',
-                                          'mk@gmail.com')
-        state_dict = self.person.add_persons_in_dictionary_by_state_name()
-        self.assertEqual(len(state_dict), 2)
+        ab_dict = self.person.add_records('MyBook', 'zab', 'm', 'pqr', 'kmn', 'uvw', '123', '1234567890',
+                                          'i@gmail.com')
+        ab_dict = self.person.add_records('MyBook', 'abc', 'm', 'pqr', 'abc', 'mno', '123', '8451238945',
+                                          't@gmail.com')
+        ab_dict = self.person.add_records('MyBook', 'moses', 'm', 'pqr', 'abc', 'mno', '123', '8451238945',
+                                          'mc@gmail.com')
+        ab_dict1 = self.person.sort_by_person_name()
+        self.assertEqual(ab_dict['MyBook'][1].first_name, 'moses')
+        self.assertEqual(ab_dict['MyBook'][0].first_name, 'abc')
+        self.assertEqual(ab_dict['MyBook'][-1].first_name, 'zab')
 
 
 if __name__ == "__main__":
