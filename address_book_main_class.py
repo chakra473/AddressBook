@@ -12,7 +12,8 @@ print("\nWelcome to Address Book System")
 
 records = Addressbook()
 while True:
-    print("\n1.Add a new Record\n2.Update Records\n3.Delete Records\n4.Display By City\n5.Display By State\n6.Exit")
+    print("\n1.Add a new Record\n2.Update Records\n3.Delete Records\n4.Display By City\n5.Display By State\n6.File "
+          "Read And Write\n7.Exit")
     ch = int(input("\nEnter your choice : "))
     if ch == 1:
         ans = input("\nDo you want to add records in new Address Book ? If yes then press 1 : ")
@@ -92,6 +93,9 @@ while True:
         total_records = records.display_persons_by_state(state_name)
         print(f"\nTotal records present where state is {state_name} : {total_records}")
     elif ch == 6:
+        records.txt_file_write()
+        records.txt_file_read()
+    elif ch == 7:
         break
     else:
         print("Choice is invalid")

@@ -329,3 +329,43 @@ class Addressbook:
         for content in self.addressbook_dict.keys():
             self.addressbook_dict[content] = sorted(self.addressbook_dict[content], key=lambda x: x.zip)
         return self.addressbook_dict
+
+    def txt_file_write(self):
+        """
+        Description:
+            This function is writing all records in txt file
+        Parameter:
+            It takes self as argument
+        Return:
+            returns nothing
+        """
+        with open('txt_test_file.txt', 'a') as f:
+            for ab_name in self.addressbook_dict.keys():
+                f.writelines(f"\n\nAddress Book : " + ab_name)
+                i = 1
+                for record in self.addressbook_dict[ab_name]:
+                    f.writelines(f"\n\nRecord - {i}")
+                    f.writelines(f"\nFirst Name : {record.first_name}")
+                    f.writelines(f"\nLast Name : {record.last_name}")
+                    f.writelines(f"\nAddress : {record.address}")
+                    f.writelines(f"\nCity : {record.city}")
+                    f.writelines(f"\nState : {record.state}")
+                    f.writelines(f"\nEmail : {record.email}")
+                    f.writelines(f"\nZip code : {record.zip}")
+                    f.writelines(f"\nPhone Number : {record.phone_number}")
+                    i += 1
+        print("\nRecord added successfully in text file")
+
+    def txt_file_read(self):
+        """
+        Description:
+            This function is reading all records from txt file and print it on console
+        Parameter:
+            It takes self as argument
+        Return:
+            returns nothing
+        """
+        with open('txt_test_file.txt', 'r') as f:
+            result = f.readlines()
+            for i in result:
+                print(i)
