@@ -134,26 +134,49 @@ class TestArithmeticOperation(unittest.TestCase):
     #     state_dict = self.person.add_persons_in_dictionary_by_state_name()
     #     self.assertEqual(len(state_dict), 2)
 
-    def test_sort_by_person_name(self):
+    # def test_sort_by_person_name(self):
+    #     """
+    #     Description:
+    #         This function is testing sort_by_person_name method
+    #     Parameter:
+    #         It takes self as argument
+    #     Return:
+    #         returns Nothing
+    #     """
+    #     self.person.create_addressbook("MyBook")
+    #     ab_dict = self.person.add_records('MyBook', 'zab', 'm', 'pqr', 'kmn', 'uvw', '123', '1234567890',
+    #                                       'i@gmail.com')
+    #     ab_dict = self.person.add_records('MyBook', 'abc', 'm', 'pqr', 'abc', 'mno', '123', '8451238945',
+    #                                       't@gmail.com')
+    #     ab_dict = self.person.add_records('MyBook', 'moses', 'm', 'pqr', 'abc', 'mno', '123', '8451238945',
+    #                                       'mc@gmail.com')
+    #     ab_dict = self.person.sort_by_person_name()
+    #     self.assertEqual(ab_dict['MyBook'][1].first_name, 'moses')
+    #     self.assertEqual(ab_dict['MyBook'][0].first_name, 'abc')
+    #     self.assertEqual(ab_dict['MyBook'][-1].first_name, 'zab')
+
+    def test_sort_method(self):
         """
         Description:
-            This function is testing sort_by_person_name method
+            This function is testing all sort  method
         Parameter:
             It takes self as argument
         Return:
             returns Nothing
         """
         self.person.create_addressbook("MyBook")
-        ab_dict = self.person.add_records('MyBook', 'zab', 'm', 'pqr', 'kmn', 'uvw', '123', '1234567890',
-                                          'i@gmail.com')
-        ab_dict = self.person.add_records('MyBook', 'abc', 'm', 'pqr', 'abc', 'mno', '123', '8451238945',
-                                          't@gmail.com')
-        ab_dict = self.person.add_records('MyBook', 'moses', 'm', 'pqr', 'abc', 'mno', '123', '8451238945',
-                                          'mc@gmail.com')
-        ab_dict1 = self.person.sort_by_person_name()
-        self.assertEqual(ab_dict['MyBook'][1].first_name, 'moses')
-        self.assertEqual(ab_dict['MyBook'][0].first_name, 'abc')
-        self.assertEqual(ab_dict['MyBook'][-1].first_name, 'zab')
+        ab_dict = self.person.add_records('MyBook', 'z', 'britto', 'pqr', 'banglore', 'karnataka', 501234, 12345678,
+                                          'mk@gmail.com')
+        ab_dict = self.person.add_records('MyBook', 'a', 'm', 'pqr', 'ahmedabad', 'gujarat', 331203, 845123895,
+                                          'mk@gmail.com')
+        ab_dict = self.person.add_records('MyBook', 'b', 'm', 'pqr', 'chennai', 'tamilnadu', 131203, 845123895,
+                                          'mk@gmail.com')
+        ab_dict_by_city = self.person.sort_by_city()
+        self.assertEqual(ab_dict_by_city['MyBook'][0].city, 'ahmedabad')
+        ab_dict_by_state = self.person.sort_by_state()
+        self.assertEqual(ab_dict_by_state['MyBook'][0].state, 'gujarat')
+        ab_dict_by_zip = self.person.sort_by_zip()
+        self.assertEqual(ab_dict_by_zip['MyBook'][0].zip, 131203)
 
 
 if __name__ == "__main__":
