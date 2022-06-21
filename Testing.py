@@ -155,45 +155,62 @@ class TestArithmeticOperation(unittest.TestCase):
     #     self.assertEqual(ab_dict['MyBook'][0].first_name, 'abc')
     #     self.assertEqual(ab_dict['MyBook'][-1].first_name, 'zab')
 
-    def test_sort_method(self):
-        """
-        Description:
-            This function is testing all sort  method
-        Parameter:
-            It takes self as argument
-        Return:
-            returns Nothing
-        """
-        self.person.create_addressbook("MyBook")
-        ab_dict = self.person.add_records('MyBook', 'z', 'britto', 'pqr', 'banglore', 'karnataka', 501234, 12345678,
-                                          'mk@gmail.com')
-        ab_dict = self.person.add_records('MyBook', 'a', 'm', 'pqr', 'ahmedabad', 'gujarat', 331203, 845123895,
-                                          'mk@gmail.com')
-        ab_dict = self.person.add_records('MyBook', 'b', 'm', 'pqr', 'chennai', 'tamilnadu', 131203, 845123895,
-                                          'mk@gmail.com')
-        ab_dict_by_city = self.person.sort_by_city()
-        self.assertEqual(ab_dict_by_city['MyBook'][0].city, 'ahmedabad')
-        ab_dict_by_state = self.person.sort_by_state()
-        self.assertEqual(ab_dict_by_state['MyBook'][0].state, 'gujarat')
-        ab_dict_by_zip = self.person.sort_by_zip()
-        self.assertEqual(ab_dict_by_zip['MyBook'][0].zip, 131203)
+    # def test_sort_method(self):
+    #     """
+    #     Description:
+    #         This function is testing all sort  method
+    #     Parameter:
+    #         It takes self as argument
+    #     Return:
+    #         returns Nothing
+    #     """
+    #     self.person.create_addressbook("MyBook")
+    #     ab_dict = self.person.add_records('MyBook', 'z', 'britto', 'pqr', 'banglore', 'karnataka', 501234, 12345678,
+    #                                       'mk@gmail.com')
+    #     ab_dict = self.person.add_records('MyBook', 'a', 'm', 'pqr', 'ahmedabad', 'gujarat', 331203, 845123895,
+    #                                       'mk@gmail.com')
+    #     ab_dict = self.person.add_records('MyBook', 'b', 'm', 'pqr', 'chennai', 'tamilnadu', 131203, 845123895,
+    #                                       'mk@gmail.com')
+    #     ab_dict_by_city = self.person.sort_by_city()
+    #     self.assertEqual(ab_dict_by_city['MyBook'][0].city, 'ahmedabad')
+    #     ab_dict_by_state = self.person.sort_by_state()
+    #     self.assertEqual(ab_dict_by_state['MyBook'][0].state, 'gujarat')
+    #     ab_dict_by_zip = self.person.sort_by_zip()
+    #     self.assertEqual(ab_dict_by_zip['MyBook'][0].zip, 131203)
 
-    def test_txt_file_write(self):
+    # def test_txt_file_write(self):
+    #     """
+    #     Description:
+    #         This function is testing that text file write operation is working properly or not
+    #     Parameter:
+    #         It takes one self as argument
+    #     Return:
+    #         returns Nothing
+    #     """
+    #     self.person.create_addressbook("MyBook")
+    #     ab_dict = self.person.add_records('MyBook', 'chakra', 'm', 'pqr', 'kmn', 'uvw', 321, 12345678,
+    #                                       'mchakra@gmail.com')
+    #     self.person.txt_file_write()
+    #     with open("txt_test_file.txt") as myfile:
+    #         line = myfile.readlines()[5]
+    #     self.assertEqual(line, 'First Name : chakra\n')
+
+    def test_csv_file_write(self):
         """
         Description:
-            This function is testing that text file write operation is working properly or not
+            This function is testing that csv_test_file.csv file write operation is working properly or not
         Parameter:
             It takes one self as argument
         Return:
             returns Nothing
         """
-        self.person.create_addressbook("MyBook")
-        ab_dict = self.person.add_records('MyBook', 'chakra', 'm', 'pqr', 'kmn', 'uvw', 321, 12345678,
-                                          'mchakra@gmail.com')
-        self.person.txt_file_write()
-        with open("txt_test_file.txt") as myfile:
-            line = myfile.readlines()[5]
-        self.assertEqual(line, 'First Name : chakra\n')
+        self.person.create_addressbook("book")
+        ab_dict = {}
+        ab_dict = self.person.add_records('book', 'chakravarthy', 'm', 'pqr', 'kmn', 'uvw', 321, 12345678, 'mchakra'
+                                                                                                           '@gmail.com')
+        self.person.csv_file_write()
+        result = self.person.csv_file_read()
+        self.assertEqual(result, 2)  # Testing number of rows of csv_test_file.csv file
 
 
 if __name__ == "__main__":

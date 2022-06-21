@@ -7,6 +7,7 @@
 """
 
 from create_contacts import CreateContacts
+import csv
 
 
 class Addressbook:
@@ -369,3 +370,49 @@ class Addressbook:
             result = f.readlines()
             for i in result:
                 print(i)
+
+    def csv_file_write(self):
+        """
+        Description:
+            This function is writing all records in csv file
+        Parameter:
+            It takes self as argument
+        Return:
+            returns nothing
+        """
+        with open('csv_test_file.csv', 'a', newline='') as cf:
+            header = ['Addressbook', 'First_Name', 'Last_Name', 'Address', 'City', 'State', 'ZipCode', 'Phone_Number',
+                      'Email']
+            csv_file = csv.writer(cf)
+            csv_file.writerow(header)
+            for ab_name in self.addressbook_dict.keys():
+                for record in self.addressbook_dict[ab_name]:
+                    csv_file.writerow(
+                        [ab_name, record.first_name, record.last_name, record.address, record.city, record.state,
+                         record.zip, record.phone_number, record.email])
+
+    def csv_file_read(self):
+        """
+        Description:
+            This function is reading all records from csv file and print it on console
+        Parameter:
+            It takes self as argument
+        Return:
+            returns nothing
+        """
+        with open('csv_test_file.csv', 'r') as cf:
+            csv_reader = csv.reader(cf)
+            next(csv_reader)
+            for row in csv_reader:
+                print(f"\nAddress Book Name : {row[0]}")
+                print(f"\nFirst Name : {row[1]}")
+                print(f"\nLast Name : {row[2]}")
+                print(f"\nAddress : {row[3]}")
+                print(f"\nCity : {row[4]}")
+                print(f"\nState : {row[5]}")
+                print(f"\nZip code : {row[6]}")
+                print(f"\nPhone Number : {row[7]}")
+                print(f"\nEmail : {row[8]}")
+
+            print(f"\nTotal no. of rows: {csv_reader.line_num}")
+        return csv_reader.line_num

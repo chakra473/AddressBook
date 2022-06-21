@@ -93,8 +93,10 @@ while True:
         total_records = records.display_persons_by_state(state_name)
         print(f"\nTotal records present where state is {state_name} : {total_records}")
     elif ch == 6:
-        records.txt_file_write()
-        records.txt_file_read()
+        # records.txt_file_write()
+        # records.txt_file_read()
+        records.csv_file_write()
+        records.csv_file_read()
     elif ch == 7:
         break
     else:
