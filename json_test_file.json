@@ -1,0 +1,35 @@
+[
+    {
+        "Addressbook": "MyBook",
+        "First_Name": "priya",
+        "Last_Name": "m",
+        "Address": "pqr",
+        "City": "banglore",
+        "State": "karnataka",
+        "ZipCode": 501234,
+        "Phone_Number": 12345678,
+        "Email": "mpriya@gmail.com"
+    },
+    {
+        "Addressbook": "MyBook",
+        "First_Name": "Jayendra",
+        "Last_Name": "m",
+        "Address": "pqr",
+        "City": "ahmedabad",
+        "State": "gujarat",
+        "ZipCode": 331203,
+        "Phone_Number": 845123895,
+        "Email": "mjay@gmail.com"
+    },
+    {
+        "Addressbook": "MyBook",
+        "First_Name": "chakravarthy",
+        "Last_Name": "m",
+        "Address": "pqr",
+        "City": "chennai",
+        "State": "tamilnadu",
+        "ZipCode": 131203,
+        "Phone_Number": 845123895,
+        "Email": "mchakra@gmail.com"
+    }
+]

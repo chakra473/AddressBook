@@ -195,22 +195,42 @@ class TestArithmeticOperation(unittest.TestCase):
     #         line = myfile.readlines()[5]
     #     self.assertEqual(line, 'First Name : chakra\n')
 
-    def test_csv_file_write(self):
+    # def test_csv_file_write(self):
+    #     """
+    #     Description:
+    #         This function is testing that csv_test_file.csv file write operation is working properly or not
+    #     Parameter:
+    #         It takes one self as argument
+    #     Return:
+    #         returns Nothing
+    #     """
+    #     self.person.create_addressbook("book")
+    #     ab_dict = {}
+    #     ab_dict = self.person.add_records('book', 'chakravarthy', 'm', 'pqr', 'kmn', 'uvw', 321, 12345678, 'mchakra'
+    #                                                                                                        '@gmail.com')
+    #     self.person.csv_file_write()
+    #     result = self.person.csv_file_read()
+    #     self.assertEqual(result, 2)  # Testing number of rows of csv_test_file.csv file
+
+    def test_json_file_write(self):
         """
         Description:
-            This function is testing that csv_test_file.csv file write operation is working properly or not
+            This function is testing that json file write operation is working properly or not
         Parameter:
             It takes one self as argument
         Return:
             returns Nothing
         """
-        self.person.create_addressbook("book")
-        ab_dict = {}
-        ab_dict = self.person.add_records('book', 'chakravarthy', 'm', 'pqr', 'kmn', 'uvw', 321, 12345678, 'mchakra'
-                                                                                                           '@gmail.com')
-        self.person.csv_file_write()
-        result = self.person.csv_file_read()
-        self.assertEqual(result, 2)  # Testing number of rows of csv_test_file.csv file
+        self.person.create_addressbook("MyBook")
+        ab_dict = self.person.add_records('MyBook', 'priya', 'm', 'pqr', 'banglore', 'karnataka', 501234, 12345678,
+                                          'mpriya@gmail.com')
+        ab_dict = self.person.add_records('MyBook', 'Jayendra', 'm', 'pqr', 'ahmedabad', 'gujarat', 331203, 845123895,
+                                          'mjay@gmail.com')
+        ab_dict = self.person.add_records('MyBook', 'chakravarthy', 'm', 'pqr', 'chennai', 'tamilnadu', 131203, 845123895,
+                                          'mchakra@gmail.com')
+        result = self.person.json_file_write()
+        result1 = self.person.json_file_read()
+        self.assertEqual(result1, 3)  # Testing number of records of json file
 
 
 if __name__ == "__main__":

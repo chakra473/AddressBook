@@ -5,6 +5,7 @@
     @Last Modified time: 2022-05-30 14:13:15
     @Title : Python Code for Address Book System
 """
+import json
 
 from create_contacts import CreateContacts
 import csv
@@ -340,7 +341,7 @@ class Addressbook:
         Return:
             returns nothing
         """
-        with open('txt_test_file.txt', 'a') as f:
+        with open('txt_test_file.txt', 'w') as f:
             for ab_name in self.addressbook_dict.keys():
                 f.writelines(f"\n\nAddress Book : " + ab_name)
                 i = 1
@@ -380,7 +381,7 @@ class Addressbook:
         Return:
             returns nothing
         """
-        with open('csv_test_file.csv', 'a', newline='') as cf:
+        with open('csv_test_file.csv', 'w', newline='') as cf:
             header = ['Addressbook', 'First_Name', 'Last_Name', 'Address', 'City', 'State', 'ZipCode', 'Phone_Number',
                       'Email']
             csv_file = csv.writer(cf)
@@ -416,3 +417,49 @@ class Addressbook:
 
             print(f"\nTotal no. of rows: {csv_reader.line_num}")
         return csv_reader.line_num
+
+    def json_file_write(self):
+        """
+        Description:
+            This function is writing all records in json file
+        Parameter:
+            It takes self as argument
+        Return:
+            returns nothing
+        """
+        with open('json_test_file.json', 'w') as file:
+            list_ele = []
+            for ab_name in self.addressbook_dict.keys():
+                for record in self.addressbook_dict[ab_name]:
+                    dict_ele = {'Addressbook': ab_name, 'First_Name': record.first_name, 'Last_Name': record.last_name,
+                                'Address': record.address, 'City': record.city, 'State': record.state,
+                                'ZipCode': record.zip, 'Phone_Number': record.phone_number, 'Email': record.email}
+                    list_ele.append(dict_ele)
+
+            obj = json.dumps(list_ele, indent=4)
+            file.write(obj)
+            print("\nRecord added successfully in json file")
+
+    def json_file_read(self):
+        """
+        Description:
+            This function is reading all records from json file and printing in console
+        Parameter:
+            It takes self as argument
+        Return:
+            returns nothing
+        """
+        with open('json_test_file.json', 'r') as file:
+            list = json.load(file)
+            for record in list:
+                print(f"\n\nAddress Book Name : {record['Addressbook']}")
+                print(f"\nFirst Name : {record['First_Name']}")
+                print(f"\nLast Name : {record['Addressbook']}")
+                print(f"\nAddress : {record['Address']}")
+                print(f"\nCity : {record['City']}")
+                print(f"\nState : {record['State']}")
+                print(f"\nZip code : {record['ZipCode']}")
+                print(f"\nPhone Number : {record['Phone_Number']}")
+                print(f"\nEmail : {record['Email']}")
+            print(f"\nTotal number of records in json file : {len(list)}")
+        return len(list)
